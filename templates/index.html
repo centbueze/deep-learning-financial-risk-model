@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Risk Return Predictor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 18px;
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    .error {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 18px;
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Risk Return Predictor</h1>
+    <form method="POST" action="/predict">
+      <label>Age</label>
+      <input type="number" name="age" required>
+
+      <label>Monthly Income</label>
+      <input type="number" name="monthly_income" required>
+
+      <label>Investment Knowledge (1-10)</label>
+      <input type="number" name="investment_knowledge" required>
+
+      <label>Investment Experience (1-10)</label>
+      <input type="number" name="investment_experience" required>
+
+      <label>Number of Assets</label>
+      <input type="number" name="num_assets" required>
+
+      <label>Time Horizon (Years)</label>
+      <input type="number" name="time_horizon" required>
+
+      <label>Goal Type (0-2)</label>
+      <input type="number" name="goal_type" required>
+
+      <label>Investment Frequency (0-2)</label>
+      <input type="number" name="investment_frequency" required>
+
+      <label>Dependents</label>
+      <input type="number" name="dependents" required>
+
+      <label>Market Sensitivity</label>
+      <input type="number" name="market_sensitivity" required>
+
+      <label>Net Worth</label>
+      <input type="number" name="net_worth" required>
+
+      <label>Preferred Asset (0-3)</label>
+      <input type="number" name="preferred_asset" required>
+
+      <label>Education Level (0-3)</label>
+      <input type="number" name="education_level" required>
+
+      <label>Employment Type (0-3)</label>
+      <input type="number" name="employment_type" required>
+
+      <label>Risk Profile (0-2)</label>
+      <input type="number" name="risk_profile" required>
+
+      <button type="submit">Predict Expected Return</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+      Predicted Expected Return: {{ prediction }}%
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="error">
+      Error: {{ error }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
